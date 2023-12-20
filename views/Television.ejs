@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Momo Henni</title>
+</head>
+<body>
+
+<h1>Liste des Téléviseurs Désirés</h1>
+
+<ul>
+    <% wishList.forEach(tv => { %>
+        <li>
+            <strong>Marque:</strong> <%= tv.marque %>, 
+            <strong>Prix:</strong> <%= tv.prix %>, 
+            <strong>Taille:</strong> <%= tv.taille %>
+            <strong>Bought:</strong> <%= tv.bought %>
+            <strong>Cassé:</strong> <%= tv.cassé %>
+            <strong>Cause:</strong> <%= tv.cause %>
+
+            
+        </li>
+    <% }); %>
+</ul>
+
+
+<form action="/ajouter-television" method="post">
+    <label for="marque">Marque :</label>
+    <input type="text" id="marque" name="marque" required>
+  
+    <label for="prix">Prix :</label>
+    <input type="number" id="prix" name="prix" required>
+  
+    <label for="taille">Taille :</label>
+    <input type="text" id="taille" name="taille" required>
+
+    <label for="bought">Bought :</label>
+    <input type="text" id="bought" name="bought" required>
+
+    <label for="cassé">Cassé :</label>
+    <input type="text" id="cassé" name="cassé" required>
+
+    <label for="cause">Cause :</label>
+    <input type="text" id="cause" name="cause" required>
+  
+    <button type="submit">Ajouter télévision</button>
+  </form>
+
+
+
+<!-- Définir une variable pour stocker le montant total -->
+<%
+let montantTotal = 0;
+%>
+
+<!-- Parcourez la liste des téléviseurs achetés -->
+<% televisionsAchetees.forEach(television => { %>
+  <!-- Ajoutez le prix de chaque téléviseur au montant total -->
+  <% montantTotal += television.prix; %>
+<% }); %>
+
+<!-- Affichez le montant total dépensé -->
+<p>Montant total dépensé : <%= montantTotal %> euros</p>
+
+
+  
+
+</body>
+</html>
